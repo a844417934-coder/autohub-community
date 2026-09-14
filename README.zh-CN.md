@@ -2,13 +2,17 @@
 
 **把闲置 Windows PC 变成一个自托管 Worker 集群。**
 
-当前为未发布候选。真实本机 Demo、SQLite 文件闭环、两 Worker 超时接管、单项重试和 UI 已验证；干净普通账户验收与 GitHub CI 尚未完成，不能视为正式发行版。
+v0.1.0：真实本机 Demo、SQLite 文件闭环、两 Worker 超时接管、单项重试和 UI 已验证，GitHub Hosted Windows CI 全绿。
+
+已知限制：Windows 11 已验证；测试账户属于 Administrators 组但所有验收均在非提升进程下运行。纯标准用户账户尚未单独验证。该项不作为 v0.1 发布阻塞项。
 
 ![真实界面，全部为合成数据](docs/workbench.png)
 
-使用 Node.js 22.23.2 x64，在候选根目录运行：
+使用 Node.js 22.23.2 x64，在全新目录运行：
 
 ```powershell
+git clone https://github.com/a844417934-coder/autohub-community.git
+cd autohub-community
 npm ci --registry=https://registry.npmjs.org
 npm run build
 npm run demo

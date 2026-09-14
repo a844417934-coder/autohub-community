@@ -6,7 +6,7 @@ Submit a batch, follow each file, and collect results from your own machines. De
 
 [中文说明](README.zh-CN.md) · [Architecture](docs/architecture.md) · [Executor API](docs/executor-api.md)
 
-**Status: unreleased candidate.** Local Windows validation is recorded; clean standard-user acceptance and hosted CI are still release gates. No public release is claimed.
+**v0.1.0** · Local Windows 11 validation and GitHub Hosted Windows CI passed. See the support matrix below for the tested account and platform boundaries.
 
 ![Actual workbench with synthetic data](docs/workbench.png)
 
@@ -28,8 +28,6 @@ npm ci --registry=https://registry.npmjs.org
 npm run build
 npm run demo
 ```
-
-The clone URL above is the intended publication target; it is not available while this candidate is unpublished. For local candidate evaluation start at its extracted directory and run the last three commands.
 
 Demo generates random keys and tiny synthetic text files in a new temporary directory, starts a Server and a separate Worker, verifies downloaded results, and prints the workbench URL and temporary browser key. Open that URL and paste the key to see real tasks. Ctrl+C stops the demo and removes its temporary directory. It does not install services or modify network settings. Package installation needs the npm registry; the running demo only calls loopback.
 
@@ -70,7 +68,8 @@ Scheduling is **task-level**: one Worker owns a task and processes its pending i
 | Environment | Current evidence |
 | --- | --- |
 | Windows 11 x64, Node 22.23.2 | Local install/build/tests, separate-process demo and two-Worker recovery verified |
-| Clean Windows standard account | Pending; required before publication |
+| Windows account boundary | Windows 11 verified; the test account belongs to Administrators, but all acceptance commands ran in non-elevated processes. A pure standard-user account has not been separately verified. |
+| GitHub Hosted Windows CI | Windows Server 2025, Node 22.23.2: install, 15 tests, build, demo and dependency audit passed |
 | Windows 10 | Not yet tested |
 | Linux/macOS | Not claimed supported |
 | Node 24 | Not a supported release target |
@@ -94,7 +93,7 @@ Run `npm run check`, `npm test`, `npm run build` and `npm run demo:smoke`. See [
 
 One Server process owns one database; one active task per Worker. No tenant isolation, general-purpose execution sandbox, transport TLS, storage quota, automatic workspace retention, cancellation API or large-file streaming is included. Individual uploads are bounded; trusted users remain responsible for total disk use. Worker enrollment keys authorize trusted machines. The OS account and storage directory must be trusted against concurrent local tampering.
 
-Next: finish clean standard-user Windows acceptance and hosted CI, then independently validate LAN setup and add one documented third-party executor. The runtime includes no private tools, cloud adapters, remote updates, telemetry, system-service integration or production deployment scripts.
+Known limitation: a pure standard-user Windows account has not been separately verified; this is not a v0.1 release blocker. Next: independently validate that account setup and LAN use, then add one documented third-party executor. The runtime includes no private tools, cloud adapters, remote updates, telemetry, system-service integration or production deployment scripts.
 
 ## License
 

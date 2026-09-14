@@ -1,6 +1,10 @@
-# Security policy — unpublished candidate
+# Security policy
 
-This candidate has no published repository or verified private reporting channel yet. **Publication is blocked until GitHub Private Vulnerability Reporting is enabled and confirmed on the independent community repository.** Do not send vulnerability details to a public issue. The intended future private report endpoint is https://github.com/a844417934-coder/autohub-community/security/advisories/new; it is not claimed active in this candidate.
+Report vulnerabilities privately through [GitHub Private Vulnerability Reporting](https://github.com/a844417934-coder/autohub-community/security/advisories/new). Do not send vulnerability details to a public issue. Include a minimal reproduction using synthetic data, the affected version and the expected security boundary; remove keys and private paths.
+
+## Verified environment
+
+Windows 11 was verified using non-elevated processes under an account belonging to Administrators. A pure standard-user account has not been separately verified; this is a documented v0.1 limitation. GitHub Hosted Windows CI runs on Windows Server 2025 and does not establish separate standard-account acceptance.
 
 ## Deployment boundary
 
