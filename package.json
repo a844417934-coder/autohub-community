@@ -1,0 +1,25 @@
+{
+  "name": "autohub-community",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.2 <23"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test --test-concurrency=1 tests/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "setup": "node scripts/setup.mjs",
+    "start": "node server/index.mjs",
+    "worker": "node worker-client/index.mjs",
+    "demo": "node scripts/demo.mjs",
+    "demo:smoke": "node scripts/demo.mjs --smoke"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "license": "MIT"
+}
